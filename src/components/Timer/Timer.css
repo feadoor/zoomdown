@@ -1,0 +1,13 @@
+.timer {
+    width: 500px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #CCCCCC;
+    border: 2px solid black;
+    overflow: hidden    ;
+}
+
+.timer__progress {
+    background-color: #673AB7;
+    height: 100%;
+}
