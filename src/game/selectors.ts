@@ -59,11 +59,23 @@ export const getNextRoundDescription = (game: CountdownGame): RoundDescription =
 };
 
 export const getP1TotalScore = (game: CountdownGame): number => {
-    return game.rounds.filter(r => r.p1Score >= r.p2Score).map(r => r.p1Score).reduce((x, y) => x + y, 0);
+    return game.rounds.filter(p1Scores).map(r => r.p1Score).reduce((x, y) => x + y, 0);
 }
 
 export const getP2TotalScore = (game: CountdownGame): number => {
-    return game.rounds.filter(r => r.p2Score >= r.p1Score).map(r => r.p2Score).reduce((x, y) => x + y, 0);
+    return game.rounds.filter(p2Scores).map(r => r.p2Score).reduce((x, y) => x + y, 0);
+}
+
+const p1Scores = (round: Round): boolean => {
+    if (round.type === 'LETTERS' || round.type === 'CONUNDRUM') return round.p1Score >= round.p2Score;
+    else if (round.type === 'NUMBERS') return (round.p1Score >= round.p2Score) && (Math.abs(round.target - (round.p1Declaration as number)) <= (Math.abs(round.target - (round.p2Declaration as number))));
+    return true;
+}
+
+const p2Scores = (round: Round): boolean => {
+    if (round.type === 'LETTERS' || round.type === 'CONUNDRUM') return round.p2Score >= round.p1Score;
+    else if (round.type === 'NUMBERS') return (round.p2Score >= round.p1Score) && (Math.abs(round.target - (round.p2Declaration as number)) <= (Math.abs(round.target - (round.p1Declaration as number))));
+    return true;
 }
 
 const gameOver = (game: CountdownGame): boolean => {
