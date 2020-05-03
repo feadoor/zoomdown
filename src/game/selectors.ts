@@ -78,8 +78,13 @@ const p2Scores = (round: Round): boolean => {
     return true;
 }
 
+const numberOfRounds = (game: CountdownGame): number => {
+    if (game.variant === '9R') return 9;
+    else return 15;
+}
+
 const gameOver = (game: CountdownGame): boolean => {
-    if (game.rounds.length > 0 && getCurrentRound(game).type === 'CONUNDRUM' && getCurrentRound(game).finished) {
+    if (game.rounds.length >= numberOfRounds(game) && getCurrentRound(game).finished) {
         return getP1TotalScore(game) !== getP2TotalScore(game);
     }
     return false;

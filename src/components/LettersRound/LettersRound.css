@@ -1,0 +1,71 @@
+.letters-round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.letters-round__pick {
+    margin: 0 10px;
+}
+
+.letters-round__timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+}
+
+.letters-round__declarations {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.letters-round__inputs {
+    display: flex;
+}
+
+.letters-round__declaration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.letters-round__declaration input {
+    height: 30px;
+    width: 220px;
+    font-size: 28px;
+}
+
+.letters-round__submit {
+    width: 200px;
+}
+
+.letters-round__results-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.letters-round__validity {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.letters-round__validity span {
+    width: 220px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.letters-round__maxes {
+    width: 720px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.letters-round__end {
+    width: 250px;
+}

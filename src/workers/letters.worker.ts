@@ -8,6 +8,7 @@ export function findWordsFromSelection(selection: string[]) {
 
     const generator = (currNode: Trie = trie): void => {
         for (const char of Object.keys(currNode)) {
+            // eslint-disable-next-line
             if (char === '_end_') (self as any).postMessage({type: 'WORD', value: currNode[char]});
             else if (counts[char] > 0) {
                 counts[char] = counts[char] - 1;

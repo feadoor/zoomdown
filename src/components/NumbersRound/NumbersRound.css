@@ -1,0 +1,103 @@
+.numbers-round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbers-round__target {
+    width: 160px;
+    height: 80px;
+    background-color: #616161;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 72px;
+    font-weight: bold;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numbers-round__pick-actions {
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.numbers-round__pick-actions button {
+    font-size: 20px;
+}
+
+.numbers-round__timer {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbers-round__timer .timer {
+    margin-bottom: 20px;
+    width: 480px;
+}
+
+.numbers-round__declarations {
+    width: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.numbers-round__inputs {
+    width: 480px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.numbers-round__declaration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 24px;
+    margin-right: 40px;
+}
+
+.numbers-round__declaration input[type="number"] {
+    font-size: 28px;
+    width: 140px;
+}
+
+.numbers-round__declaration input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+}
+
+.numbers-round__validity {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.numbers-round__submit {
+    width: 120px;
+    height: 60px;
+}
+
+.numbers-round__results-preview {
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbers-round__maxes {
+    width: 480px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.numbers-round__end {
+    width: 250px;
+}

@@ -3,6 +3,7 @@ import './BetweenRounds.css';
 import { CountdownGame } from '../../game/game';
 import { CountdownAction, startLettersRound, startNumbersRound, startConundrumRound } from '../../game/actions';
 import { getP1TotalScore, getP2TotalScore, getNextRoundDescription, RoundDescription } from '../../game/selectors';
+import useEventListener from '../../hooks/useEventListener';
 
 export interface BetweenRoundsProps {
     game: CountdownGame;
@@ -21,11 +22,19 @@ const BetweenRounds: React.FC<BetweenRoundsProps> = ({game, dispatch}) => {
         }
     }
 
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.keyCode === 32) {
+            startNextRound();
+        }
+    }
+
+    useEventListener('keydown', handleKeyDown);
+
     return (
         <div className="between-rounds">
-            <div className="between-rounds__score">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
-            <div className="between-rounds__next-round">The next round will be: {roundSummary(nextRoundDescription)}</div>
-            <button onClick={() => startNextRound()}>Start next round</button>
+            <div className="game__score">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
+            <div className="game__round-description">The next round will be: {roundSummary(nextRoundDescription)}</div>
+            <button className="button--blue" onClick={() => startNextRound()}>Start next round</button>
         </div>
     )
 }

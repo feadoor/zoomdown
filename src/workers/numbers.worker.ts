@@ -71,6 +71,7 @@ export function findNumbersMethods(numbers: number[], target: number) {
             const prettySolution = prettyPrint(t);
             if (dist < bestDist || prettySolution.length < bestSolution.length) {
                 bestDist = dist; bestValue = value; bestSolution = prettySolution;
+                // eslint-disable-next-line
                 (self as any).postMessage({type: 'METHOD', value: bestValue, method: prettySolution});
             }
         }

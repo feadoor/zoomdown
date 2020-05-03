@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { checkValidity } from '../solvers/lettersSolver';
 
-export default function useLettersDeclarations(selection: string[]) {
-    const [declaration, _setDeclaration] = useState('');
+export default function useLettersDeclarations(selection: string[], _declaration: string = '') {
+    const [declaration, _setDeclaration] = useState(_declaration);
     const [score, setScore] = useState(0);
 
     const setDeclaration = (word: string) => {

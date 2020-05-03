@@ -1,0 +1,62 @@
+.conundrum-round {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conundrum-round__timer {
+    margin-bottom: 20px;
+}
+
+.conundrum-round__timer .timer {
+    width: 720px;
+}
+
+.conundrum-round__buzz {
+    width: 720px;
+    margin-bottom: 20px;
+}
+
+.conundrum-round__declarations {
+    width: 720px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conundrum-round__declaration {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 50px;
+}
+
+.conundrum-round__name {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.conundrum-round__declaration input {
+    width: 220px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.conundrum-round__declaration button {
+    width: 150px;
+}
+
+.conundrum-round__results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conundrum-round__results span {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.conundrum-round__results button {
+    width: 250px;
+}

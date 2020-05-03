@@ -48,7 +48,7 @@ export const setTarget = (): SetTargetAction => ({
     value: 100 + Math.floor(900 * Math.random())
 });
 
-export const SetNumbersRoundResult = (p1Declaration: number, p2Declaration: number, p1Score: number, p2Score: number, max: {value: number, method: string}): SetNumbersRoundResultAction => ({
+export const setNumbersRoundResult = (p1Declaration: number, p2Declaration: number, p1Score: number, p2Score: number, max: {value: number, method: string}): SetNumbersRoundResultAction => ({
     type: 'SET_NUMBERS_ROUND_RESULT',
     p1Declaration, p2Declaration, p1Score, p2Score, max
 });

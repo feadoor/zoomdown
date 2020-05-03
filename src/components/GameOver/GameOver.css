@@ -1,0 +1,13 @@
+.game-over {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-over .game__selection {
+    margin-bottom: 120px;
+}
+
+.game-over .game__score {
+    margin-bottom: 50px;
+}

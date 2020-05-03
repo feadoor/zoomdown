@@ -4,6 +4,7 @@ import './GameOver.css';
 import { CountdownGame } from '../../game/game';
 import { CountdownAction, createNewGame } from '../../game/actions';
 import { getP1TotalScore, getP2TotalScore } from '../../game/selectors';
+import Selection from '../Selection/Selection';
 
 export interface GameOverProps {
     game: CountdownGame;
@@ -13,8 +14,11 @@ export interface GameOverProps {
 const GameOver: React.FC<GameOverProps> = ({game, dispatch}) => {
     return (
         <div className="game-over">
-            <div className="game-over__results">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
-            <button onClick={() => dispatch(createNewGame())}>Start New Game</button>
+            <div className="game__selection">
+                <Selection selection={['G', 'A', 'M', 'E', ' ', 'O', 'V', 'E', 'R']}></Selection>
+            </div>
+            <div className="game__score">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
+            <button className="button--blue" onClick={() => dispatch(createNewGame())}>Start New Game</button>
         </div>
     );
 };

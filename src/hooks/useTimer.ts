@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import useInterval from './useInterval';
 
-export default function useTimer(seconds: number) {
+export default function useTimer(seconds: number, onExpire?: () => void) {
 
     const [timeRemaining, setTimeRemaining] = useState(seconds);
     const [isRunning, setIsRunning] = useState(false);
@@ -14,6 +14,7 @@ export default function useTimer(seconds: number) {
         } else {
             setIsRunning(false);
             setIsExpired(true);
+            if (onExpire) onExpire();
         }
     }, isRunning ? 20 : null);
 
