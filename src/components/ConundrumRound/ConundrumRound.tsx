@@ -94,7 +94,7 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
             {showReveal && <div className="conundrum-round__solve-button">
                 <button className="button--green" onClick={() => dispatch(solveConundrum())}>Reveal answer</button>
             </div>}
-            {(roundState === ConundrumRoundState.SOLVED || roundState == ConundrumRoundState.EXPIRED) && round.solved && <div className="conundrum-round__results">
+            {(roundState === ConundrumRoundState.SOLVED || roundState === ConundrumRoundState.EXPIRED) && round.solved && <div className="conundrum-round__results">
                 {round.p1Score > 0 && <span>Solved by {game.p1Name}!</span>}
                 {round.p2Score > 0 && <span>Solved by {game.p2Name}!</span>}
                 {round.p1Score === 0 && round.p2Score === 0 && <span>No-one solved it!</span>}

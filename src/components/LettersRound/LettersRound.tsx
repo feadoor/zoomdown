@@ -6,7 +6,7 @@ import countdownTheme from '../../media/countdown.mp3';
 
 import { getCurrentRoundDescription, getCurrentRound, getP1TotalScore, getP2TotalScore } from '../../game/selectors';
 import { CountdownGame, LettersRound } from '../../game/game';
-import { CountdownAction, drawConsonant, drawVowel, setLettersRoundResult, endRound, startLettersRound } from '../../game/actions';
+import { CountdownAction, drawConsonant, drawVowel, setLettersRoundResult, endRound } from '../../game/actions';
 import Selection from '../Selection/Selection';
 import useLettersDeclarations from '../../hooks/useLettersDeclaration';
 import useLettersSolution from '../../hooks/useLettersSolution';
