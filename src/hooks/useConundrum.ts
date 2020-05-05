@@ -23,7 +23,7 @@ export default function useConundrum(initialState: ConundrumRoundState, _dispatc
 
     const [roundState, setRoundState] = useState(initialState);
 
-    const {resumeTimer, stopTimer, expireTimer, timeRemaining, isRunning, isExpired} = useTimer(31, () => {
+    const {resumeTimer, stopTimer, expireTimer, timeRemaining, isRunning, isExpired} = useTimer(32, () => {
         setRoundState(ConundrumRoundState.EXPIRED);
     });
     const [startSound, {pause: pauseSound}] = useSound(countdownTheme);
@@ -47,7 +47,7 @@ export default function useConundrum(initialState: ConundrumRoundState, _dispatc
     const buzz = () => {
         pauseSound();
         stopTimer();
-        setBuzzTime(30 - timeRemaining);
+        setBuzzTime(32 - timeRemaining);
         setRoundState(ConundrumRoundState.GUESSING);
     };
 

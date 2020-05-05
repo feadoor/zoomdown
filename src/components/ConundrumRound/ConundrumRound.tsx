@@ -71,7 +71,7 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
                 <Selection selection={selectionToShow()}></Selection>
             </div>
             <div className="conundrum-round__timer">
-                <Timer durationSeconds={31} secondsRemaining={timeRemaining}></Timer>
+                <Timer durationSeconds={30} secondsRemaining={Math.max(0, timeRemaining - 2)}></Timer>
             </div>
             {roundState === ConundrumRoundState.WAITING && <div className="conundrum-round__pick-actions">
                 <button className="button--green" onClick={startRound}>Reveal conundrum</button>
