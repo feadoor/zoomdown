@@ -66,6 +66,14 @@ export const getP2TotalScore = (game: CountdownGame): number => {
     return game.rounds.filter(p2Scores).map(r => r.p2Score).reduce((x, y) => x + y, 0);
 }
 
+export const getP1CumulativeScore = (game: CountdownGame, index: number) => {
+    return game.rounds.slice(0, index + 1).filter(p1Scores).map(r => r.p1Score).reduce((x, y) => x + y, 0);
+}
+
+export const getP2CumulativeScore = (game: CountdownGame, index: number) => {
+    return game.rounds.slice(0, index + 1).filter(p2Scores).map(r => r.p2Score).reduce((x, y) => x + y, 0);
+}
+
 const p1Scores = (round: Round): boolean => {
     if (round.type === 'LETTERS' || round.type === 'CONUNDRUM') return round.p1Score >= round.p2Score;
     else if (round.type === 'NUMBERS') return (round.p1Score >= round.p2Score) && (Math.abs(round.target - (round.p1Declaration as number)) <= (Math.abs(round.target - (round.p2Declaration as number))));

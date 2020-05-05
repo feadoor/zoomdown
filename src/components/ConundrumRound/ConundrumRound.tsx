@@ -25,7 +25,7 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
         if (round.solved) return ConundrumRoundState.SOLVED;
         else return ConundrumRoundState.WAITING;
     };
-    const { roundState, startRound, buzz, resume, hideBuzzer, p1HasDeclared, declareForP1, p2HasDeclared, declareForP2, timeRemaining } = useConundrum(initialRoundState(), dispatch, round.answer);
+    const { roundState, startRound, buzz, resume, p1HasDeclared, declareForP1, p2HasDeclared, declareForP2, timeRemaining } = useConundrum(initialRoundState(), dispatch, round.answer);
 
     const selectionToShow = () => {
         if (roundState === ConundrumRoundState.WAITING || roundState === ConundrumRoundState.GUESSING) return emptySelection();
@@ -34,12 +34,13 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
         else return getSelection(round);
     };
 
-    const showBuzzer = (roundState === ConundrumRoundState.TICKING || roundState === ConundrumRoundState.EXPIRED) && !hideBuzzer && !round.solved && (!p1HasDeclared || !p2HasDeclared);
+    const showBuzzer = roundState === ConundrumRoundState.TICKING && !round.solved && (!p1HasDeclared || !p2HasDeclared);
     const showReveal = roundState === ConundrumRoundState.EXPIRED && !round.solved;
 
     const handleKeyDown = (e: KeyboardEvent) => {
         if (e.keyCode === 32) {
             if (roundState === ConundrumRoundState.WAITING) startRound();
+            else if (roundState === ConundrumRoundState.INCORRECT) resume();
             else if (showBuzzer) buzz();
             else if (showReveal) dispatch(solveConundrum());
             else if (round.solved) dispatch(endRound());
@@ -68,7 +69,7 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
                 <Selection selection={selectionToShow()}></Selection>
             </div>
             <div className="conundrum-round__timer">
-                <Timer durationSeconds={30} secondsRemaining={timeRemaining}></Timer>
+                <Timer durationSeconds={31} secondsRemaining={timeRemaining}></Timer>
             </div>
             {roundState === ConundrumRoundState.WAITING && <div className="conundrum-round__pick-actions">
                 <button className="button--green" onClick={startRound}>Reveal conundrum</button>

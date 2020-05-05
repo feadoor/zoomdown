@@ -1,0 +1,19 @@
+.recap table {
+    font-weight: bold;
+    border-collapse: collapse;
+}
+
+.recap td {
+    font-size: 16px;
+    border: 1px solid #CCCCCC;
+    background-color: #455A64;
+    text-align: center;
+    padding: 10px;
+}
+
+.recap .invalid::after {
+    margin-left: 4px;
+    content: 'X';
+    font-weight: normal;
+    font-size: 14px;
+}

@@ -5,9 +5,13 @@
 }
 
 .game-over .game__selection {
-    margin-bottom: 120px;
+    margin-bottom: 30px;
 }
 
 .game-over .game__score {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+.game-over .game__recap {
+    margin-bottom: 40px;
 }

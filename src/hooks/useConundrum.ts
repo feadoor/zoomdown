@@ -23,14 +23,12 @@ export default function useConundrum(initialState: ConundrumRoundState, _dispatc
 
     const [roundState, setRoundState] = useState(initialState);
 
-    const {resumeTimer, stopTimer, expireTimer, timeRemaining, isRunning, isExpired} = useTimer(30, () => {
+    const {resumeTimer, stopTimer, expireTimer, timeRemaining, isRunning, isExpired} = useTimer(31, () => {
         setRoundState(ConundrumRoundState.EXPIRED);
-        setTimeout(() => setHideBuzzer(true), 2000);
     });
     const [startSound, {pause: pauseSound}] = useSound(countdownTheme);
-    
+
     const [buzzTime, setBuzzTime] = useState<number | undefined>(undefined);
-    const [hideBuzzer, setHideBuzzer] = useState(false);
     const [p1HasDeclared, setP1HasDeclared] = useState(false);
     const [p2HasDeclared, setP2HasDeclared] = useState(false);
 
@@ -83,7 +81,7 @@ export default function useConundrum(initialState: ConundrumRoundState, _dispatc
         else solved();
     }
 
-    return { roundState, startRound, buzz, resume, hideBuzzer, p1HasDeclared, declareForP1, p2HasDeclared, declareForP2, timeRemaining, isRunning, isExpired };
+    return { roundState, startRound, buzz, resume, p1HasDeclared, declareForP1, p2HasDeclared, declareForP2, timeRemaining, isRunning, isExpired };
 }
 
 const randomConundrum = (): [string, string] => {
