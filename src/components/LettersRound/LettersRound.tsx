@@ -67,10 +67,6 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
         }
     }
 
-    const inputKeydown = (e: KEvent) => {
-        if (e.keyCode === 32) e.stopPropagation();
-    }
-
     useEventListener('keydown', handleKeydown);
 
     return (
@@ -92,11 +88,11 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
                 <div className="letters-round__inputs">
                     <div className="letters-round__declaration">
                         <div className="letters-round__name">{game.p1Name}</div>
-                        <input type="text" onKeyDown={inputKeydown} value={p1Declaration} onChange={e => setP1Declaration(e.target.value.toUpperCase().trim())}></input>
+                        <input type="text" value={p1Declaration} onChange={e => setP1Declaration(e.target.value.toUpperCase().trim())}></input>
                     </div>
                     <div className="letters-round__declaration">
                         <div className="letters-round__name">{game.p2Name}</div>
-                        <input type="text" onKeyDown={inputKeydown} value={p2Declaration} onChange={e => setP2Declaration(e.target.value.toUpperCase().trim())}></input>
+                        <input type="text" value={p2Declaration} onChange={e => setP2Declaration(e.target.value.toUpperCase().trim())}></input>
                     </div>
                 </div>
                 <button className="letters-round__submit button--green" onClick={() => submitDeclarations()}>{submitText}</button>

@@ -17,3 +17,10 @@
     font-weight: normal;
     font-size: 14px;
 }
+
+.recap .more-maxes::after {
+    margin-left: 8px;
+    content: 'ETC.';
+    font-weight: normal;
+    font-size: 12px;
+}

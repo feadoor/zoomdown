@@ -1,4 +1,4 @@
-import { CountdownGame, Round } from './game';
+import { CountdownGame, Round, LettersRound, NumbersRound, ConundrumRound } from './game';
 
 export type GameState = 'WAITING' | 'BETWEEN' | 'LETTERS' | 'NUMBERS' | 'CONUNDRUM' | 'ENDED';
 
@@ -74,15 +74,27 @@ export const getP2CumulativeScore = (game: CountdownGame, index: number) => {
     return game.rounds.slice(0, index + 1).filter(p2Scores).map(r => r.p2Score).reduce((x, y) => x + y, 0);
 }
 
+export const getMaxCumulativeScore = (game: CountdownGame, index: number) => {
+    const maxForRound = (round: Round) => round.type === 'LETTERS' ? maxForLettersRound(round) : round.type === 'NUMBERS' ? maxForNumbersRound(round) : 10;
+    return game.rounds.slice(0, index + 1).map(r => maxForRound(r)).reduce((x, y) => x + y, 0);
+}
+
+const maxForLettersRound = (round: LettersRound) => round.maxes[0].length === 9 ? 18 : round.maxes[0].length;
+
+const maxForNumbersRound = (round: NumbersRound) => {
+    const distanceFromTarget = Math.abs(round.target - round.max.value);
+    return distanceFromTarget === 0 ? 10 : distanceFromTarget <= 5 ? 7 : distanceFromTarget <= 10 ? 5 : 0;
+}
+
 const p1Scores = (round: Round): boolean => {
     if (round.type === 'LETTERS' || round.type === 'CONUNDRUM') return round.p1Score >= round.p2Score;
-    else if (round.type === 'NUMBERS') return (round.p1Score >= round.p2Score) && (Math.abs(round.target - (round.p1Declaration as number)) <= (Math.abs(round.target - (round.p2Declaration as number))));
+    else if (round.type === 'NUMBERS') return (round.p1Score >= round.p2Score) && (round.p1Score > round.p2Score || Math.abs(round.target - (round.p1Declaration as number)) <= (Math.abs(round.target - (round.p2Declaration as number))));
     return true;
 }
 
 const p2Scores = (round: Round): boolean => {
     if (round.type === 'LETTERS' || round.type === 'CONUNDRUM') return round.p2Score >= round.p1Score;
-    else if (round.type === 'NUMBERS') return (round.p2Score >= round.p1Score) && (Math.abs(round.target - (round.p2Declaration as number)) <= (Math.abs(round.target - (round.p1Declaration as number))));
+    else if (round.type === 'NUMBERS') return (round.p2Score >= round.p1Score) && (round.p2Score > round.p1Score || Math.abs(round.target - (round.p2Declaration as number)) <= (Math.abs(round.target - (round.p1Declaration as number))));
     return true;
 }
 
