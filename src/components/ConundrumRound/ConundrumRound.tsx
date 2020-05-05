@@ -51,12 +51,14 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
         if (e.keyCode === 13) {
             declareForP1(p1Declaration);
         }
+        e.stopPropagation();
     }
 
     const handleP2KeyDown = (e: KEvent) => {
         if (e.keyCode === 13) {
             declareForP2(p2Declaration);
         }
+        e.stopPropagation();
     }
 
     useEventListener('keydown', handleKeyDown);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent as KEvent } from 'react';
 import './NumbersRound.css';
 
 import useSound from 'use-sound';
@@ -43,7 +43,7 @@ const NumbersRoundComponent: React.FC<NumbersRoundProps> = ({game, dispatch}) =>
 
     const startRound = () => {
         startTimer();
-        startSound();
+        startSound({});
     };
 
     const makeSelection = (larges: number) => {
@@ -63,6 +63,10 @@ const NumbersRoundComponent: React.FC<NumbersRoundProps> = ({game, dispatch}) =>
         if (e.keyCode === 13) {
             if (isExpired) submitDeclarations();
         }
+    }
+
+    const inputKeydown = (e: KEvent) => {
+        if (e.keyCode === 32) e.stopPropagation();
     }
 
     useEventListener('keydown', handleKeydown);
@@ -90,18 +94,18 @@ const NumbersRoundComponent: React.FC<NumbersRoundProps> = ({game, dispatch}) =>
                 <div className="numbers-round__inputs">
                     <div className="numbers-round__declaration">
                         <div className="numbers-round__name">{game.p1Name}</div>
-                        <input tabIndex={1} type="number" value={p1Declaration || undefined} onChange={e => setP1Declaration(+e.target.value)}></input>
+                        <input tabIndex={1} type="number" onKeyDown={inputKeydown} value={p1Declaration || undefined} onChange={e => setP1Declaration(+e.target.value)}></input>
                         <div className="numbers-round__validity">
                             Valid?
-                            <input tabIndex={3} type="checkbox" checked={p1Valid} onChange={e => setP1Valid(e.target.checked)}></input>
+                            <input tabIndex={3} type="checkbox" onKeyDown={inputKeydown} checked={p1Valid} onChange={e => setP1Valid(e.target.checked)}></input>
                         </div>
                     </div>
                     <div className="numbers-round__declaration">
                         <div className="numbers-round__name">{game.p2Name}</div>
-                        <input tabIndex={2} type="number" value={p2Declaration || undefined} onChange={e => setP2Declaration(+e.target.value)}></input>
+                        <input tabIndex={2} type="number" onKeyDown={inputKeydown} value={p2Declaration || undefined} onChange={e => setP2Declaration(+e.target.value)}></input>
                         <div className="numbers-round__validity">
                             Valid?
-                            <input tabIndex={4} type="checkbox" checked={p2Valid} onChange={e => setP2Valid(e.target.checked)}></input>
+                            <input tabIndex={4} type="checkbox" onKeyDown={inputKeydown} checked={p2Valid} onChange={e => setP2Valid(e.target.checked)}></input>
                         </div>
                     </div>
                 </div>

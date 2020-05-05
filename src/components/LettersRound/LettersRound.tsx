@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, KeyboardEvent as KEvent } from 'react';
 import './LettersRound.css';
 
 import useSound from 'use-sound';
@@ -51,7 +51,7 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
 
     const startRound = () => {
         startTimer();
-        startSound();
+        startSound({});
     };
 
     const handleKeydown = (e: KeyboardEvent) => {
@@ -65,6 +65,10 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
         if (e.keyCode === 13) {
             if (isExpired) submitDeclarations();
         }
+    }
+
+    const inputKeydown = (e: KEvent) => {
+        if (e.keyCode === 32) e.stopPropagation();
     }
 
     useEventListener('keydown', handleKeydown);
@@ -88,11 +92,11 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
                 <div className="letters-round__inputs">
                     <div className="letters-round__declaration">
                         <div className="letters-round__name">{game.p1Name}</div>
-                        <input type="text" value={p1Declaration} onChange={e => setP1Declaration(e.target.value.toUpperCase())}></input>
+                        <input type="text" onKeyDown={inputKeydown} value={p1Declaration} onChange={e => setP1Declaration(e.target.value.toUpperCase().trim())}></input>
                     </div>
                     <div className="letters-round__declaration">
                         <div className="letters-round__name">{game.p2Name}</div>
-                        <input type="text" value={p2Declaration} onChange={e => setP2Declaration(e.target.value.toUpperCase())}></input>
+                        <input type="text" onKeyDown={inputKeydown} value={p2Declaration} onChange={e => setP2Declaration(e.target.value.toUpperCase().trim())}></input>
                     </div>
                 </div>
                 <button className="letters-round__submit button--green" onClick={() => submitDeclarations()}>{submitText}</button>

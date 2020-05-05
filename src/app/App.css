@@ -29,7 +29,7 @@ button.button--blue {
     color: #EEEEEE;
 }
 
-button.button--blue:hover {
+button.button--blue:hover, button.button--blue:focus {
     background-color: #00328D;
 }
 
@@ -38,7 +38,7 @@ button.button--grey {
     color: #333333;
 }
 
-button.button--grey:hover {
+button.button--grey:hover, button.button--grey:focus {
     background-color: #DDDDDD;
 }
 
@@ -47,7 +47,7 @@ button.button--green {
     color: #CCCCCC;
 }
 
-button.button--green:hover {
+button.button--green:hover, button.button--green:focus {
     background-color: #1B5E20;
 }
 
@@ -56,7 +56,7 @@ button.button--red {
     color: #EEEEEE;
 }
 
-button.button--red:hover {
+button.button--red:hover, button.button--red:hover {
     background-color: #D32F2F;
 }
 
