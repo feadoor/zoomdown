@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/zoomdown/static/css/main.5e5ed9de.chunk.css",
+    "main.js": "/zoomdown/static/js/main.afaa8990.chunk.js",
+    "main.js.map": "/zoomdown/static/js/main.afaa8990.chunk.js.map",
+    "runtime-main.js": "/zoomdown/static/js/runtime-main.b395d59c.js",
+    "runtime-main.js.map": "/zoomdown/static/js/runtime-main.b395d59c.js.map",
+    "static/js/2.a7e54946.chunk.js": "/zoomdown/static/js/2.a7e54946.chunk.js",
+    "static/js/2.a7e54946.chunk.js.map": "/zoomdown/static/js/2.a7e54946.chunk.js.map",
+    "static/js/3.c5d44bd8.chunk.js": "/zoomdown/static/js/3.c5d44bd8.chunk.js",
+    "static/js/3.c5d44bd8.chunk.js.map": "/zoomdown/static/js/3.c5d44bd8.chunk.js.map",
+    "0fdb60b708fea5b0cc22.worker.js": "/zoomdown/0fdb60b708fea5b0cc22.worker.js",
+    "0fdb60b708fea5b0cc22.worker.js.map": "/zoomdown/0fdb60b708fea5b0cc22.worker.js.map",
+    "6ddaab01775b8499af05.worker.js": "/zoomdown/6ddaab01775b8499af05.worker.js",
+    "6ddaab01775b8499af05.worker.js.map": "/zoomdown/6ddaab01775b8499af05.worker.js.map",
+    "index.html": "/zoomdown/index.html",
+    "precache-manifest.d79106b3919a49bebcc76aaa4fe19934.js": "/zoomdown/precache-manifest.d79106b3919a49bebcc76aaa4fe19934.js",
+    "service-worker.js": "/zoomdown/service-worker.js",
+    "static/css/main.5e5ed9de.chunk.css.map": "/zoomdown/static/css/main.5e5ed9de.chunk.css.map",
+    "static/js/2.a7e54946.chunk.js.LICENSE.txt": "/zoomdown/static/js/2.a7e54946.chunk.js.LICENSE.txt",
+    "static/js/3.c5d44bd8.chunk.js.LICENSE.txt": "/zoomdown/static/js/3.c5d44bd8.chunk.js.LICENSE.txt",
+    "static/media/countdown.mp3": "/zoomdown/static/media/countdown.d27402a0.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b395d59c.js",
+    "static/js/2.a7e54946.chunk.js",
+    "static/css/main.5e5ed9de.chunk.css",
+    "static/js/main.afaa8990.chunk.js"
+  ]
+}
