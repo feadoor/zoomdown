@@ -7,6 +7,16 @@
     padding-top: 50px;
 }
 
+.app__abandon-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.app__abandon-link button {
+    font-size: 20px;
+}
+
 button {
     display: inline-flex;
     align-items: center;
@@ -58,6 +68,15 @@ button.button--red {
 
 button.button--red:hover, button.button--red:hover {
     background-color: #D32F2F;
+}
+
+button.button--text {
+    color: #DDDDDD;
+    text-decoration: underline;
+}
+
+button.button--text:hover, button.button--text:focus {
+    color: #AAAAAA;
 }
 
 .game__score {

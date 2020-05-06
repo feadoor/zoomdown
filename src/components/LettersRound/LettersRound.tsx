@@ -72,7 +72,7 @@ const LettersRoundComponent: React.FC<LettersRoundProps> = ({game, dispatch}) =>
     return (
         <div className="letters-round">
             <div className="game__score">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
-            <div className="game__round-description">Letters picked by {roundDescription.picker}</div>
+            <div className="game__round-description">Round {game.rounds.length}: Letters picked by {roundDescription.picker}</div>
             <div className="game__selection">
                 <Selection selection={extendSelection(selection)}></Selection>
             </div>

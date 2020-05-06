@@ -32,7 +32,7 @@ const Recap: React.FC<RecapProps> = ({ game }) => {
 
     const renderNumbersRow = (round: NumbersRound, index: number) => <tr key={index}>
         <td className="recap__round-number">{index + 1}</td>
-        <td className="recap__numbers-selection">{round.selection.join(' ')}</td>
+        <td className="recap__numbers-selection">{round.selection.join(' ')} → {round.target}</td>
         <td className={round.p1Score > 0 ? '' : 'invalid'}>{round.p1Declaration}</td>
         <td className="recap__score">{getP1CumulativeScore(game, index)} - {getP2CumulativeScore(game, index)}</td>
         <td className={round.p2Score > 0 ? '' : 'invalid'}>{round.p2Declaration}</td>

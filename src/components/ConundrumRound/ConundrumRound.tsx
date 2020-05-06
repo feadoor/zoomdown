@@ -66,7 +66,7 @@ const ConundrumRoundComponent: React.FC<ConundrumRoundProps> = ({game, dispatch}
     return (
         <div className="conundrum-round">
             <div className="game__score">{game.p1Name} {getP1TotalScore(game)} - {getP2TotalScore(game)} {game.p2Name}</div>
-            <div className="game__round-description">Conundrum</div>
+            <div className="game__round-description">Round {game.rounds.length}: Conundrum</div>
             <div className="game__selection">
                 <Selection selection={selectionToShow()}></Selection>
             </div>
