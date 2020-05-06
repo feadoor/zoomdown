@@ -93,7 +93,7 @@ const randomConundrum = (): [string, string] => {
 
 const pickRandomConundrumAnswer = (): string => {
     const numberOfConundrums = conundrums.conundrums.length;
-    return conundrums.conundrums[Math.floor(numberOfConundrums * Math.random())].answer;
+    return conundrums.conundrums[Math.floor(numberOfConundrums * Math.random())];
 };
 
 const decentShuffle = (): number[] => {

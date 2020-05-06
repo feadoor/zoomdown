@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent as KEvent } from 'react';
+import React, { useState } from 'react';
 import './LettersRound.css';
 
 import useSound from 'use-sound';
