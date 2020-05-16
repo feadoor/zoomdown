@@ -230,9 +230,10 @@ const newConundrumRound = (): ConundrumRound => ({
 });
 
 const newConsonantPile = () => {
+    const letterOrder = ['R', 'S', 'T', 'N', 'D', 'L', 'G', 'M', 'P', 'C', 'B', 'F', 'H', 'V', 'W', 'J', 'K', 'Q', 'X', 'Y', 'Z'].reverse();
     const frequencies: {[s: string]: number} = {'R': 9, 'S': 9, 'T': 9, 'N': 8, 'D': 6, 'L': 5, 'G': 4, 'M': 4, 'P': 4, 'C': 3, 'B': 2, 'F': 2, 'H': 2, 'V': 2, 'W': 2, 'J': 1, 'K': 1, 'Q': 1, 'X': 1, 'Y': 1, 'Z': 1};
     const pile = [];
-    for (const letter of Object.keys(frequencies)) {
+    for (const letter of letterOrder) {
         for (let i = 0; i < frequencies[letter]; ++i) {
             pile.push(letter);
         }
@@ -241,9 +242,10 @@ const newConsonantPile = () => {
 }
 
 const newVowelPile = () => {
+    const letterOrder = ['E', 'A', 'I', 'O', 'U'].reverse();
     const frequencies: {[s: string]: number} = {'E': 20, 'A': 15, 'I': 13, 'O': 13, 'U': 7};
     const pile = [];
-    for (const letter of Object.keys(frequencies)) {
+    for (const letter of letterOrder) {
         for (let i = 0; i < frequencies[letter]; ++i) {
             pile.push(letter);
         }
@@ -258,9 +260,9 @@ const newSmallPile = () => [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9
 const isBadConsonant = (letter: string) => ['C', 'B', 'F', 'H', 'V', 'W', 'J', 'K', 'Q', 'X', 'Y', 'Z'].includes(letter);
 
 const shuffleConsonants = () => {
-    const pile = shuffle(shuffle(newConsonantPile()));
+    const pile = weightedShuffle(newConsonantPile());
     for (let i = 0; i < pile.length - 2; ++i) {
-        if (isBadConsonant(pile[i]) && isBadConsonant(pile[i + 1]) && isBadConsonant(pile[i + 2])) {
+        if (isBadConsonant(pile[i]) && isBadConsonant(pile[i + 1]) && isBadConsonant(pile[i + 2]) && Math.random() < 0.9) {
             const indicesToSwap = [...Array(pile.length - i - 3)].map((_, idx) => idx + i + 3).filter(idx => !isBadConsonant(pile[idx]));
             if (indicesToSwap.length > 0) {
                 const randomIndex = Math.floor(Math.random() * indicesToSwap.length);
@@ -272,9 +274,9 @@ const shuffleConsonants = () => {
 };
 
 const shuffleVowels = () => {
-    const pile = shuffle(shuffle(newVowelPile()));
+    const pile = weightedShuffle(newVowelPile());
     for (let i = 0; i < pile.length - 3; ++i) {
-        if (pile[i] === pile[i + 1] && pile[i + 1] === pile[i + 2]) {
+        if (pile[i] === pile[i + 1] && pile[i + 1] === pile[i + 2] && Math.random() < 0.9) {
             const vowelToIgnore = pile[i];
             const indicesToSwap = [...Array(pile.length - i - 3)].map((_, idx) => idx + i + 3).filter(idx => pile[idx] !== vowelToIgnore);
             if (indicesToSwap.length > 0) {
@@ -285,6 +287,15 @@ const shuffleVowels = () => {
     }
     return pile;
 };
+
+const weightedShuffle = (cards: string[]) => {
+    const pile: string[] = [];
+    while (cards.length > 0) {
+        const index = Math.floor(pile.length * Math.random());
+        pile.splice(index, 0, cards.pop() as string);
+    }
+    return pile;
+}
 
 const shuffle = <T>(_items: T[]) => {
     const items = [..._items];
