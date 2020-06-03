@@ -289,11 +289,39 @@ const shuffleVowels = () => {
 };
 
 const weightedShuffle = (cards: string[]) => {
-    const pile: string[] = [];
-    while (cards.length > 0) {
-        const index = Math.floor(pile.length * Math.random());
-        pile.splice(index, 0, cards.pop() as string);
+
+    const counts: {[s: string]: number} = {}
+    for (const card of cards) {
+        if (!counts.hasOwnProperty(card)) {
+            counts[card] = 0;
+        }
+        counts[card] += 1;
     }
+
+    const pile: string[] = [];
+
+    for (let idx = 0; idx < cards.length; idx++) {
+        const weightedCounts: {[s: string]: number} = {}
+        for (const c of Object.keys(counts)) {
+            weightedCounts[c] = counts[c];
+        }
+        for (let jdx = idx - 1; jdx >= idx - 3 && jdx >= 0; jdx--) {
+            weightedCounts[pile[jdx]] /= 2;
+        }
+        const totalWeight = 8 * Object.values(weightedCounts).reduce((a, b) => a + b, 0);
+
+        const roll = Math.floor(Math.random() * totalWeight);
+        let runningTotal = 0;
+        for (const c of Object.keys(weightedCounts)) {
+            runningTotal += 8 * weightedCounts[c];
+            if (runningTotal > roll) {
+                pile.push(c);
+                counts[c] -= 1;
+                break;
+            }
+        }
+    }
+
     return pile;
 }
 
